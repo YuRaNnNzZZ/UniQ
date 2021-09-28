@@ -53,6 +53,10 @@ public class UniQ
         this.registerRecipeTweaker(new ForestryRecipeTweaker(), "forestry.core.recipes.ShapedRecipeCustom");
         this.registerRecipeTweaker(new BasicRecipeTweaker("gregtech", "output", "net.minecraftforge.oredict.ShapedOreRecipe"), "gregtech.api.util.GT_Shaped_Recipe");
         this.registerRecipeTweaker(new BasicRecipeTweaker("gregtech", "output", "net.minecraftforge.oredict.ShapelessOreRecipe"), "gregtech.api.util.GT_Shapeless_Recipe");
+        this.registerRecipeTweaker(new BasicRecipeTweaker("gregtech_addon", "output", "net.minecraftforge.oredict.ShapedOreRecipe"), "gregtechmod.api.util.GT_Shaped_Recipe");
+        this.registerRecipeTweaker(new BasicRecipeTweaker("gregtech_addon", "output", "net.minecraftforge.oredict.ShapelessOreRecipe"), "gregtechmod.api.util.GT_Shapeless_Recipe");
+        this.registerRecipeTweaker(new BasicRecipeTweaker("gregtech_addon", "output", "net.minecraftforge.oredict.ShapedOreRecipe"), "gregtechmod.api.util.GT_Shaped_NBT_Keeping_Recipe");
+        this.registerRecipeTweaker(new BasicRecipeTweaker("gregtech_addon", "output", "net.minecraftforge.oredict.ShapelessOreRecipe"), "gregtechmod.api.util.GT_Shapeless_NBT_Keeping_Recipe");
 
         this.registerTweaker(new MinecraftTweaker());
         this.registerTweaker(new ThermalExpansionTweaker());
@@ -70,6 +74,8 @@ public class UniQ
         this.registerTweaker(new AdvancedSolarPanelsTweaker());
         this.registerTweaker(new ThaumcraftTweaker());
         this.registerTweaker(new GregTechTweaker());
+        this.registerTweaker(new RedPowerTweaker());
+        this.registerTweaker(new GregTechAddonTweaker());
     }
 
     @EventHandler
