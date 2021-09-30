@@ -52,25 +52,19 @@ public class GregTechAddonTweaker implements IGeneralTweaker {
 
     @Override
     public void run(ResourceUnifier unifier) throws Exception {
-        Class cGregTechAPI = Class.forName("gregtechmod.api.GregTech_API");
-
-        Field fRecipeAdder = cGregTechAPI.getDeclaredField("sRecipeAdder");
-        Object recipeAdderInstance = fRecipeAdder.get(null);
-
-        Class cRecipeAdder = Class.forName("gregtechmod.api.interfaces.IGT_RecipeAdder");
+        Class cRecipeMaps = Class.forName("gregtechmod.common.recipe.RecipeMaps");
         Class cRecipeMap = Class.forName("gregtechmod.api.recipe.RecipeMap");
-        Class cRecipeFactory = Class.forName("gregtechmod.api.recipe.RecipeFactory");
 
         Field fRecipeList = cRecipeMap.getDeclaredField("recipeList");
         fRecipeList.setAccessible(true);
 
-        for (String recipeMapName : new String[]{"fusionRecipes", "centrifugeRecipes", "electrolyzerRecipes", "chemicalRecipes", "blastRecipes", "canningRecipes", "alloySmelterRecipes", "circuitAssemblerRecipes", "hammerRecipes", "wiremillRecipes", "bendingRecipes", "extruderRecipes", "implosionCompressorRecipes", "grinderRecipes", "distillationrRecipes", "latheRecipes", "cutterRecipes", "freezerRecipes", "sawmillRecipes"}) {
-            processRecipeMap(unifier, recipeMapName, recipeAdderInstance, cRecipeAdder, fRecipeList, cRecipeFactory);
+        for (String recipeMapName : new String[]{"FUSION_REACTOR", "CENTRIFUGE", "ELECTROLYZER", "GRINDER", "BLAST_FURNANCE", "BRONZE_BLAST_FURNANCE", "IMPLOSION_COMPRESSOR", "SAWMILL", "VACUUM_FREEZER", "CHEMICAL", "DISTILLATION", "WIREMILL", "BENDING", "ALLOY_SMELTING", "ASSEMBLING", "CANINNING", "LATHE", "CUTTING", "EXTRUDING", "HAMMER", "PRINTER", "PULVERIZING"}) {
+            processRecipeMap(unifier, recipeMapName, cRecipeMaps, fRecipeList);
         }
     }
 
-    private void processRecipeMap(ResourceUnifier unifier, String mapName, Object recipeAdder, Class cRecipeAdder, Field fRecipeList, Class cRecipeFactory) throws Exception {
-        Object recipeMapInstance = cRecipeAdder.getDeclaredMethod(mapName).invoke(recipeAdder);
+    private void processRecipeMap(ResourceUnifier unifier, String mapName, Class cRecipeMaps, Field fRecipeList) throws Exception {
+        Object recipeMapInstance = cRecipeMaps.getDeclaredField(mapName).get(null); // it's always a public static final field
 
         List recipeList = (List) fRecipeList.get(recipeMapInstance);
 
