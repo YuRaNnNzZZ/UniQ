@@ -58,7 +58,7 @@ public class GregTechAddonTweaker implements IGeneralTweaker {
         Field fRecipeList = cRecipeMap.getDeclaredField("recipeList");
         fRecipeList.setAccessible(true);
 
-        for (String recipeMapName : new String[]{"FUSION_REACTOR", "CENTRIFUGE", "ELECTROLYZER", "GRINDER", "BLAST_FURNANCE", "BRONZE_BLAST_FURNANCE", "IMPLOSION_COMPRESSOR", "SAWMILL", "VACUUM_FREEZER", "CHEMICAL", "DISTILLATION", "WIREMILL", "BENDING", "ALLOY_SMELTING", "ASSEMBLING", "CANINNING", "LATHE", "CUTTING", "EXTRUDING", "HAMMER", "PRINTER", "PULVERIZING"}) {
+        for (String recipeMapName : new String[]{"FUSION_REACTOR", "CENTRIFUGE", "ELECTROLYZER", "GRINDER", "BLAST_FURNACE", "BRONZE_BLAST_FURNACE", "IMPLOSION_COMPRESSOR", "SAWMILL", "VACUUM_FREEZER", "CHEMICAL", "DISTILLATION", "WIREMILL", "BENDING", "ALLOY_SMELTING", "ASSEMBLING", "CANNING", "LATHE", "CUTTING", "EXTRUDING", "HAMMER", "PRINTER", "PULVERIZING"}) {
             processRecipeMap(unifier, recipeMapName, cRecipeMaps, fRecipeList);
         }
     }
