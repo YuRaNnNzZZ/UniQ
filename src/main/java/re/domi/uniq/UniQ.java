@@ -76,6 +76,7 @@ public class UniQ
         this.registerTweaker(new GregTechTweaker());
         this.registerTweaker(new RedPowerTweaker());
         this.registerTweaker(new GregTechAddonTweaker());
+        this.registerTweaker(new EtFuturumTweaker());
     }
 
     @EventHandler
